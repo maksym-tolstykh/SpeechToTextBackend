@@ -26,7 +26,7 @@ def transcribe_audio(file_path, language="uk"):
 # Тестовий виклик
 if __name__ == "__main__":
     # Вкажіть шлях до вашого аудіофайлу
-    file_path = os.path.abspath("test.wav")  # Змінити на ваш аудіофайл
+    file_path = os.path.abspath("audio/test.wav")  # Змінити на ваш аудіофайл
     print(file_path)
     print("Транскрибую аудіо...")
     transcript = transcribe_audio(file_path)

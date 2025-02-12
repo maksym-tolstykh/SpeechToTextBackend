@@ -4,8 +4,7 @@ import os
 import wave
 from pydub import AudioSegment
 
-# Завантажуємо модель Whisper
-model = whisper.load_model("medium")
+
 
 def convert_to_wav(file_path):
     audio = AudioSegment.from_file(file_path)
@@ -14,6 +13,8 @@ def convert_to_wav(file_path):
     return wav_path
 
 def transcribe_audio(file_path, language="uk"):
+    # Завантажуємо модель Whisper
+    model = whisper.load_model("medium",device="cpu")
     # Конвертуємо аудіофайл у формат WAV
     wav_path = convert_to_wav(file_path)
     
