@@ -1,12 +1,15 @@
+import time
 import whisper
 import os
 import torch
 
 
+print(torch.cuda.is_available())
+print(torch.cuda.get_device_name(0))
 
-
-# Завантаження моделі Whisper
-model = whisper.load_model("medium")  # Можна обрати 'tiny', 'base', 'small', 'medium', 'large'
+print("Завантаження моделі Whisper...")
+os.environ["WHISPER_MODELS_DIR"] = os.path.abspath("models")  # Примусово вказуємо шлях
+model = whisper.load_model("medium", device="cuda", download_root=os.environ["WHISPER_MODELS_DIR"])
 
 def transcribe_audio(file_path, language="uk"):
     """
@@ -32,3 +35,4 @@ if __name__ == "__main__":
     transcript = transcribe_audio(file_path)
     print("Результат транскрибування:")
     print(transcript)
+    time.sleep(30)
